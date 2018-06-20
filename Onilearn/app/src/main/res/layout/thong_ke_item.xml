@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/thangThongKe"
+            android:text="Thang 5"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="#0093E9"
+            android:layout_margin="5dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+            <TextView
+                android:padding="5dp"
+                android:layout_marginLeft="48dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bài thi đã làm: "
+                android:textSize="18sp"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/txtBaiThiDaLam"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="adsads"
+                android:textColor="#0093E9"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+            <TextView
+                android:padding="5dp"
+
+                android:layout_marginLeft="100dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Điểm thi: "
+                android:textSize="15sp"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/txtDiemThi"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="adsads"
+                android:textColor="#0093E9"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+            <TextView
+                android:padding="5dp"
+
+                android:layout_marginLeft="60dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tổng thời gian: "
+                android:textSize="15sp"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/txtThoiGian"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="adsads"
+                android:textColor="#0093E9"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+            <TextView
+                android:padding="5dp"
+                android:layout_marginLeft="48dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bài thi bỏ qua: "
+                android:textSize="18sp"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:id="@+id/txtBaiThiBoQua"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="adsads"
+                android:textColor="#E90008"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuAccount"
+        android:title="Account"
+        app:showAsAction="always"
+        android:icon="@drawable/accountpng"
+        />
+    <item
+        android:id="@+id/menuTime"
+        android:title="Time"
+        app:showAsAction="always"
+        android:icon="@drawable/time"
+        />
+    <item
+        android:id="@+id/menuHome"
+        android:title="Home"
+        />
+    <item
+        android:id="@+id/menuDatLich"
+        android:title="Đặt lịch"
+        />
+    <item
+        android:id="@+id/menuThongKe"
+        android:title="Thống kê"
+        />
+</menu>
