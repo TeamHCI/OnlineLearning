@@ -17,7 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.DatLichActivity" />
-        <activity android:name=".activity.ThongKeActi"></activity>
+        <activity android:name=".activity.ThongKeActi" />
+        <activity android:name=".activity.TrueFalseActivity" />
+        <activity android:name=".activity.FalseActivity" />
+        <activity android:name=".activity.TrueActivity"></activity>
     </application>
 
 </manifest>
