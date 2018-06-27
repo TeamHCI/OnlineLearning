@@ -140,8 +140,8 @@ public class DatLichActivity extends AppCompatActivity {
         listBaoLai.add("20 phút");
         listBaoLai.add("30 phút");
         listBaoLai.add("40 phút");
-        ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, listBaoLai);
-        arrayAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, listBaoLai);
+        arrayAdapter1.setDropDownViewResource(R.layout.spinner_item);
         baoLaiSpinner.setAdapter(arrayAdapter1);
         baoLaiSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -156,11 +156,11 @@ public class DatLichActivity extends AppCompatActivity {
             }
         });
         ArrayList<String> listThongBao = new ArrayList<>();
-        listThongBao.add("Âm Thanh & rung");
+        listThongBao.add("Âm Thanh & Rung");
         listThongBao.add("Chỉ âm thanh");
         listThongBao.add("Chỉ rung");
-        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, listThongBao);
-        arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, listThongBao);
+        arrayAdapter2.setDropDownViewResource(R.layout.spinner_item);
         loaiThongBaoSpinner.setAdapter(arrayAdapter2);
         loaiThongBaoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -181,8 +181,8 @@ public class DatLichActivity extends AppCompatActivity {
         listAmThanh.add("Buzzer Alarm");
         listAmThanh.add("Carbon");
         listAmThanh.add("Platinum");
-        ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, listAmThanh);
-        arrayAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, listAmThanh);
+        arrayAdapter3.setDropDownViewResource(R.layout.spinner_item);
         amThanhThongBaoSpinner.setAdapter(arrayAdapter3);
         amThanhThongBaoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ff4829"
+        android:background="@drawable/activity_question_gradient"
         android:alpha="0.3"
         android:orientation="vertical">
 
@@ -62,7 +62,6 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
                         android:background="#fd1111"
-                        android:onClick="clickToFalse"
                         android:text="FALSE"
                         android:textColor="#ffffff"
                         android:textSize="25dp"
@@ -75,7 +74,6 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
                         android:background="#1cb900"
-                        android:onClick="clickToTrue"
                         android:text="TRUE"
                         android:textColor="#ffffff"
                         android:textSize="25dp"
@@ -96,11 +94,8 @@
                 android:id="@+id/toolbarTrueFalse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ff4829"
                 android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:title="aaaaa"
-                app:titleTextColor="#ff4829" />
+                android:theme="?attr/actionBarTheme" />
 
         </LinearLayout>
 

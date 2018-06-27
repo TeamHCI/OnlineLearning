@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ff4829"
+        android:background="@drawable/activity_question_gradient"
         android:orientation="vertical">
 
         <LinearLayout
@@ -29,11 +29,8 @@
                     android:id="@+id/toolbarTrueFalse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ff4829"
                     android:minHeight="?attr/actionBarSize"
-                    android:theme="?attr/actionBarTheme"
-                    app:title="aaaaa"
-                    app:titleTextColor="#ff4829" />
+                    android:theme="?attr/actionBarTheme" />
 
             </LinearLayout>
 

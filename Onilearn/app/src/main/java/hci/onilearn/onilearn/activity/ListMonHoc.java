@@ -83,6 +83,10 @@ public class ListMonHoc extends AppCompatActivity {
                 Intent intentSearch = new Intent(getApplicationContext(),ThongKeActi.class);
                 startActivity(intentSearch);
                 break;
+            case R.id.menuTime:
+                Intent intentTime = new Intent(getApplicationContext(),DatLichActivity.class);
+                startActivity(intentTime);
+                break;
 
 
         }
