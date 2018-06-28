@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.TrueFalseActivity">
+    tools:context=".activity.TrueFalseActivity"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ff4829"
+        android:background="@drawable/test_background"
         android:orientation="vertical">
 
         <LinearLayout
@@ -28,12 +29,11 @@
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbarTrueFalse"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ff4829"
-                    android:minHeight="?attr/actionBarSize"
-                    android:theme="?attr/actionBarTheme"
-                    app:title="aaaaa"
-                    app:titleTextColor="#ff4829" />
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="#0fff"
+                    android:elevation="0dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             </LinearLayout>
 
@@ -58,7 +58,7 @@
                     android:textSize="25dp" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/txtQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:gravity="center"
@@ -66,39 +66,82 @@
                     android:textColor="#000000"
                     android:textSize="25dp" />
 
-                <LinearLayout
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent">
 
                     <Button
                         android:id="@+id/btnFalse"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
                         android:background="#fd1111"
                         android:text="FALSE"
                         android:textColor="#ffffff"
                         android:textSize="25dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
                         android:id="@+id/btnTrue"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="8dp"
                         android:background="#1cb900"
                         android:text="TRUE"
                         android:textColor="#ffffff"
                         android:textSize="25dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </LinearLayout>
+                </android.support.constraint.ConstraintLayout>
 
             </LinearLayout>
         </LinearLayout>
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/imgFalse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="#5fff"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:src="@drawable/redcross"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/imgTrue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="#5fff"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:src="@drawable/check"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>

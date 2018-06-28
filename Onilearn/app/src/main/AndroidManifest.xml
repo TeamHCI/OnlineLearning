@@ -13,7 +13,8 @@
         <activity android:name=".activity.DatLichActivity"
             android:parentActivityName=".activity.MainActivity"/>
         <activity android:name=".activity.ThongKeActi" />
-        <activity android:name=".activity.TrueFalseActivity" />
+        <activity android:name=".activity.TrueFalseActivity"
+            android:parentActivityName=".activity.MainActivity"/>
         <activity android:name=".activity.FalseActivity" />
         <activity android:name=".activity.TrueActivity" />
         <activity android:name=".activity.MainActivity">

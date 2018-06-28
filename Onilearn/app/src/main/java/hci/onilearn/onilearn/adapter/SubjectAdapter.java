@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import hci.onilearn.onilearn.R;
+import hci.onilearn.onilearn.activity.TrueFalseActivity;
 import hci.onilearn.onilearn.model.MyData;
 import hci.onilearn.onilearn.model.Subject;
 
@@ -50,7 +51,8 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHode
                         ((Activity) context).finish();
                     }
                 } else {
-                    Toast.makeText(context, "Select a subject " + subjectList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, TrueFalseActivity.class);
+                    context.startActivity(intent);
                 }
             }
         });

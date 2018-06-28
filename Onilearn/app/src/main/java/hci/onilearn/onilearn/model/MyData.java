@@ -8,11 +8,12 @@ public class MyData implements Serializable {
     public static ArrayList<Category> categories;
     public static ArrayList<Subject> subjects;
     public static ArrayList<Task> tasks;
+    public static ArrayList<QuestionTrueFalse> questionTrueFalses;
 
     static {
         //subject
         subjects = new ArrayList<>();
-        subjects.add(new Subject("User Interface Programing", ""));
+        subjects.add(new Subject("English", ""));
         subjects.add(new Subject("Accounting", ""));
         subjects.add(new Subject("Java", ""));
         subjects.add(new Subject("Android", ""));
@@ -54,6 +55,14 @@ public class MyData implements Serializable {
         Calendar calendar2 = Calendar.getInstance();
         calendar2.add(Calendar.HOUR_OF_DAY,6);
         tasks.add(new Task(subjects.get(2), calendar.getTime(),calendar2.getTime(),true,"Multiple choice"));
+        calendar.add(Calendar.HOUR_OF_DAY,2);
+        calendar2.add(Calendar.HOUR_OF_DAY,2);
         tasks.add(new Task(subjects.get(3), calendar.getTime(),calendar2.getTime(),true,"True false"));
+
+        questionTrueFalses = new ArrayList<>();
+        questionTrueFalses.add(new QuestionTrueFalse("What are your name?", false));
+        questionTrueFalses.add(new QuestionTrueFalse("How old are you?", true));
+        questionTrueFalses.add(new QuestionTrueFalse("There are one thousand years in a CENTURY", false));
+        questionTrueFalses.add(new QuestionTrueFalse("FOUNDED is the past tense of FOUND", true));
     }
 }
