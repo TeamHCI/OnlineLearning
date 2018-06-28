@@ -22,12 +22,20 @@ public class Task implements Serializable {
 
     public String getStartTimeString(){
         calendar.setTime(startTime);
-        return calendar.get(Calendar.HOUR_OF_DAY) +":"+calendar.get(Calendar.MINUTE);
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        String strHour = (hourOfDay > 9)? (hourOfDay + "") : ("0" + hourOfDay);
+        String strMinute = (minute > 9)? (minute + "") : ("0" + minute);
+        return strHour +":"+strMinute;
     }
 
     public String getEndTimeString(){
         calendar.setTime(endTime);
-        return calendar.get(Calendar.HOUR_OF_DAY) +":"+calendar.get(Calendar.MINUTE);
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        String strHour = (hourOfDay > 9)? (hourOfDay + "") : ("0" + hourOfDay);
+        String strMinute = (minute > 9)? (minute + "") : ("0" + minute);
+        return strHour +":"+strMinute;
     }
 
     public Subject getSubject() {

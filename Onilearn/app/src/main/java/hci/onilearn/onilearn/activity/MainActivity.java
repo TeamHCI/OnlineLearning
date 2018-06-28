@@ -2,10 +2,13 @@ package hci.onilearn.onilearn.activity;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -13,6 +16,7 @@ import hci.onilearn.onilearn.R;
 import hci.onilearn.onilearn.adapter.MainPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
+    private final int REQUEST_CODE_TASK = 001;
     private MainPagerAdapter mainPagerAdapter;
     private ViewPager viewPager;
 
@@ -68,10 +72,23 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.menuTime) {
 //            Toast.makeText(MainActivity.this, "Action clicked", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, DatLichActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,REQUEST_CODE_TASK);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        for (Fragment fragment : getChildFragmentManager().getFragments()) {
+//            fragment.onActivityResult(requestCode, resultCode, data);
+//        }
+        Fragment page = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.viewPage + ":" + 1);
+        page.onActivityResult(requestCode, resultCode, data);
+//        ((MainPagerAdapter)viewPager.getAdapter()).getItem(1).onActivityResult(requestCode, resultCode, data);
+    Log.d("lala","1");
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 }

@@ -14,6 +14,7 @@ import hci.onilearn.onilearn.fragment.TimeTableFragment;
 //import com.onilearnapp.onilearnapp.Fragment.TimeTableFragment;
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
+    private Fragment category, timetable, analyze;
 
     public MainPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -23,11 +24,20 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new CategoryFragment();
+                if (category == null)
+                    return new CategoryFragment();
+                else
+                    return category;
             case 1:
-                return new TimeTableFragment();
+                if (timetable == null)
+                    return new TimeTableFragment();
+                else
+                    return timetable;
             case 2:
-                return new AnalyzeFragment();
+                if (analyze == null)
+                    return new AnalyzeFragment();
+                else
+                    return analyze;
             default:
                 return null;
         }

@@ -37,7 +37,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHoder> {
         holder.txtTaskEndTime.setText(task.getEndTimeString());
         holder.txtSubjectName.setText(task.getSubject().getName());
         holder.txtCourse.setText("Basic");
-        holder.txtTestType.setText("Multiple choice");
+        holder.txtTestType.setText(task.getType());
     }
 
     @Override

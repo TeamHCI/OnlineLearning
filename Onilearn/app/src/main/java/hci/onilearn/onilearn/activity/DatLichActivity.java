@@ -23,17 +23,23 @@ import android.widget.TimePicker;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import hci.onilearn.onilearn.R;
+import hci.onilearn.onilearn.model.MyData;
+import hci.onilearn.onilearn.model.Subject;
+import hci.onilearn.onilearn.model.Task;
 import hci.onilearn.onilearn.receiver.AlarmReceiver;
 
 public class DatLichActivity extends AppCompatActivity {
-
+    final int REQUEST_CODE_SUBJECT = 123;
+    private Subject subject;
+    private Calendar taskTime;
     Toolbar toolbar;
-    Spinner baoLaiSpinner,loaiThongBaoSpinner,amThanhThongBaoSpinner;
-    String selectedBaoLai = "",selectedThongbao="",selectedAmThanh="";
-    EditText edtMonHoc, edtGhiChu;
-    TextView timeDatLich, dateDatLich;
+    Spinner baoLaiSpinner, loaiThongBaoSpinner, amThanhThongBaoSpinner;
+    String selectedBaoLai = "", selectedThongbao = "", selectedAmThanh = "";
+    EditText edtGhiChu;
+    TextView txtMonHoc, timeDatLich, dateDatLich;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +51,20 @@ public class DatLichActivity extends AppCompatActivity {
         catchSpinner();
         chonNgay();
         chonGio();
+        init();
     }
+
+    private void init(){
+        subject = MyData.subjects.get(2);
+        txtMonHoc.setText(subject.getName());
+
+        taskTime = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        timeDatLich.setText(simpleDateFormat.format(taskTime.getTime()));
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateDatLich.setText(simpleDateFormat.format(taskTime.getTime()));
+    }
+
     private void chonGio() {
         timeDatLich.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +74,7 @@ public class DatLichActivity extends AppCompatActivity {
         });
     }
 
-    private void chonNgay(){
+    private void chonNgay() {
         dateDatLich.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,20 +83,23 @@ public class DatLichActivity extends AppCompatActivity {
         });
     }
 
-    private void timePickerDialog(){
+    private void timePickerDialog() {
         final Calendar calendar = Calendar.getInstance();
         int gio = calendar.get(Calendar.HOUR_OF_DAY);
         int phut = calendar.get(Calendar.MINUTE);
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
-                calendar.set(0,0,0,hourOfDay,minute);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+                calendar.set(0, 0, 0, hourOfDay, minute);
+                taskTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                taskTime.set(Calendar.MINUTE, minute);
                 timeDatLich.setText(simpleDateFormat.format(calendar.getTime()));
             }
-        },gio,phut,true);
+        }, gio, phut, true);
         timePickerDialog.show();
     }
+
     private void datePickerDialog() {
         final Calendar calendar = Calendar.getInstance();
         int ngay = calendar.get(Calendar.DATE);
@@ -86,11 +108,12 @@ public class DatLichActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                calendar.set(year,month,dayOfMonth);
+                calendar.set(year, month, dayOfMonth);
+                taskTime.set(year, month, dayOfMonth);
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 dateDatLich.setText(simpleDateFormat.format(calendar.getTime()));
             }
-        },nam,thang,ngay);
+        }, nam, thang, ngay);
         datePickerDialog.show();
 
     }
@@ -105,22 +128,35 @@ public class DatLichActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuLuu:
-                Intent intent = new Intent(this, AlarmReceiver.class);
-                intent.putExtra("action", "on");
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pendingIntent);
+                saveTask();
                 break;
-
-
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void saveTask() {
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.putExtra("action", "on");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, taskTime.getTimeInMillis(), pendingIntent);
+        Intent saveTaskIntent = new Intent();
+        Date startTime = taskTime.getTime();
+        taskTime.add(Calendar.HOUR_OF_DAY,1);
+        Date endTime = taskTime.getTime();
+
+        Task task = new Task(subject,startTime,endTime,true,"Multiple choice");
+
+        saveTaskIntent.putExtra("task",task);
+        setResult(RESULT_OK,saveTaskIntent);
+        finish();
+
     }
 
     private void reflect() {
         toolbar = (Toolbar) findViewById(R.id.toolbardatlich);
         baoLaiSpinner = (Spinner) findViewById(R.id.spinnerthoigiabaolai);
-        edtMonHoc = (EditText) findViewById(R.id.edtchonmonhocdatlich);
+        txtMonHoc = (TextView) findViewById(R.id.edtchonmonhocdatlich);
         edtGhiChu = (EditText) findViewById(R.id.edtghichudatlich);
         timeDatLich = (TextView) findViewById(R.id.timedatalich);
         dateDatLich = (TextView) findViewById(R.id.datedatalich);
@@ -133,12 +169,6 @@ public class DatLichActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     private void catchSpinner() {
@@ -207,4 +237,19 @@ public class DatLichActivity extends AppCompatActivity {
 
     }
 
+    public void clickToChooseSubject(View view) {
+        Intent intent = new Intent(this, SubjectChoiceActivity.class);
+        intent.putExtra("type", "make a task");
+        startActivityForResult(intent, REQUEST_CODE_SUBJECT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_SUBJECT && resultCode == RESULT_OK && data != null) {
+            subject = MyData.subjects.get(data.getIntExtra("SubjectId", 0));
+            txtMonHoc.setText(subject.getName());
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

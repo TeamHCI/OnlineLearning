@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.ListMonHoc" />
-        <activity android:name=".activity.DatLichActivity" />
+        <activity android:name=".activity.DatLichActivity"
+            android:parentActivityName=".activity.MainActivity"/>
         <activity android:name=".activity.ThongKeActi" />
         <activity android:name=".activity.TrueFalseActivity" />
         <activity android:name=".activity.FalseActivity" />
@@ -32,7 +33,11 @@
         <service
             android:name=".service.RingToneService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".activity.SubjectChoiceActivity"
+            android:parentActivityName=".activity.DatLichActivity"
+            android:label="Choose a subject"></activity>
     </application>
 
 </manifest>
