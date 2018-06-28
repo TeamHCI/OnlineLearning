@@ -1,7 +1,10 @@
 package hci.onilearn.onilearn.activity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import hci.onilearn.onilearn.R;
+import hci.onilearn.onilearn.receiver.AlarmReceiver;
 
 public class DatLichActivity extends AppCompatActivity {
 
@@ -101,8 +105,11 @@ public class DatLichActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuLuu:
-                //Intent intentHome = new Intent(getApplicationContext(),DatLichActivity.class);
-                //startActivity(intentHome);
+                Intent intent = new Intent(this, AlarmReceiver.class);
+                intent.putExtra("action", "on");
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pendingIntent);
                 break;
 
 

@@ -11,7 +11,7 @@
         android:id="@+id/menuTime"
         android:title="Time"
         app:showAsAction="always"
-        android:icon="@drawable/time"
+        android:icon="@drawable/outline_alarm_white_18dp"
         />
     <item
         android:id="@+id/menuHome"
