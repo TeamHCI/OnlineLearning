@@ -68,6 +68,8 @@ public class AlarmActivity extends AppCompatActivity {
 
     public void doTask(View view) {
         stopAlarm(view);
+        Intent intent = new Intent(this, TrueFalseActivity.class);
+        startActivity(intent);
         finish();
     }
 
