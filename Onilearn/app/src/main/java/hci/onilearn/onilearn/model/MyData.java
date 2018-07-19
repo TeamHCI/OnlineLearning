@@ -14,16 +14,16 @@ public class MyData implements Serializable {
         //subject
         subjects = new ArrayList<>();
         subjects.add(new Subject("English", ""));
-        subjects.add(new Subject("Accounting", ""));
-        subjects.add(new Subject("Java", ""));
-        subjects.add(new Subject("Android", ""));
-        subjects.add(new Subject("HTML", ""));
-        subjects.add(new Subject("C#", ""));
-        subjects.add(new Subject("Ruby", ""));
-        subjects.add(new Subject("Javascript", ""));
-        subjects.add(new Subject("Python", ""));
-        subjects.add(new Subject("3DX", ""));
-        subjects.add(new Subject("Blender", ""));
+        subjects.add(new Subject("Ngữ văn 12", ""));
+        subjects.add(new Subject("Toán 12", ""));
+        subjects.add(new Subject("Vật lý 12", ""));
+        subjects.add(new Subject("Hóa học 12", ""));
+        subjects.add(new Subject("Sinh học 12", ""));
+        subjects.add(new Subject("Lịch sử 12", ""));
+        subjects.add(new Subject("Địa lý 12", ""));
+        subjects.add(new Subject("Tin học", ""));
+        subjects.add(new Subject("Khoa học tự nhiên", ""));
+        subjects.add(new Subject("Khoa học xã hội", ""));
 
         //category
         categories = new ArrayList<>();
@@ -31,7 +31,7 @@ public class MyData implements Serializable {
         tmpSubjects.add(subjects.get(0));
         tmpSubjects.add(subjects.get(1));
         tmpSubjects.add(subjects.get(2));
-        categories.add(new Category("Recent", tmpSubjects));
+        categories.add(new Category("Gần đây", tmpSubjects));
 
         tmpSubjects = new ArrayList<>();
         tmpSubjects.add(subjects.get(2));
@@ -41,12 +41,12 @@ public class MyData implements Serializable {
         tmpSubjects.add(subjects.get(6));
         tmpSubjects.add(subjects.get(7));
         tmpSubjects.add(subjects.get(8));
-        categories.add(new Category("Software Engineering", tmpSubjects));
+        categories.add(new Category("Trung học phổ thông", tmpSubjects));
 
         tmpSubjects = new ArrayList<>();
         tmpSubjects.add(subjects.get(9));
         tmpSubjects.add(subjects.get(10));
-        categories.add(new Category("Design", tmpSubjects));
+        categories.add(new Category("Kiến thức tổng hợp", tmpSubjects));
 
         //task
         tasks = new ArrayList<>();
