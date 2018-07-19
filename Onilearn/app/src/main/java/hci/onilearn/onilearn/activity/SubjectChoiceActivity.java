@@ -2,6 +2,8 @@ package hci.onilearn.onilearn.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 
@@ -24,11 +26,13 @@ public class SubjectChoiceActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ListView listView = (ListView) findViewById(R.id.lvCategory);
+        RecyclerView recyclerView = findViewById(R.id.lvCategory);
         categoryList = MyData.categories;
 
-        categoryAdapter = new CategoryAdapter(this, R.layout.category_item, categoryList);
-        listView.setAdapter(categoryAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        categoryAdapter = new CategoryAdapter(this, categoryList);
+        recyclerView.setAdapter(categoryAdapter);
     }
 }
 

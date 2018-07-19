@@ -42,7 +42,8 @@
             android:name=".activity.SubjectChoiceActivity"
             android:label="Choose a subject"
             android:parentActivityName=".activity.DatLichActivity" />
-        <activity android:name=".activity.ResultActivity"></activity>
+        <activity android:name=".activity.ResultActivity"
+            android:parentActivityName=".activity.MainActivity"></activity>
     </application>
 
 </manifest>

@@ -6,15 +6,21 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.Calendar;
 
 import hci.onilearn.onilearn.R;
+import hci.onilearn.onilearn.model.MyData;
+import hci.onilearn.onilearn.model.Subject;
 import hci.onilearn.onilearn.receiver.AlarmReceiver;
 
 public class AlarmActivity extends AppCompatActivity {
+    TextView txtTime, txtSubjectName, txtTaskStartTime, txtTaskEndTime, txtCourse, txtTestType;
+    ImageView imgSubjectIcon;
+    Subject subject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +30,13 @@ public class AlarmActivity extends AppCompatActivity {
         int hourOfDay = cal.get(Calendar.HOUR_OF_DAY);
         int minute = cal.get(Calendar.MINUTE);
         TextView txtTime = (TextView) findViewById(R.id.txtTime);
+
+
         String strHour = (hourOfDay > 9)? (hourOfDay + "") : ("0" + hourOfDay);
         String strMinute = (minute > 9)? (minute + "") : ("0" + minute);
         txtTime.setText(strHour + ":" + strMinute);
+
+        init();
 
         SeekBar seekBar = (SeekBar) findViewById(R.id.seekBarSwipe);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -60,6 +70,17 @@ public class AlarmActivity extends AppCompatActivity {
 //        stopAlarm(view);
 //        finish();
 //    }
+    private void init(){
+        subject = MyData.subjects.get(getIntent().getIntExtra("SubjectId",0));
+        txtSubjectName = (TextView) findViewById(R.id.txtSubjectName);
+        imgSubjectIcon = findViewById(R.id.imgSubjectIcon);
+        txtCourse = (TextView) findViewById(R.id.txtCourse);
+        txtTestType = (TextView) findViewById(R.id.txtTestType);
+        txtSubjectName.setText(subject.getName());
+        imgSubjectIcon.setImageResource(subject.getResId());
+        txtCourse.setText("Basic");
+        txtTestType.setText("True false");
+    }
 
     public void skipTask(View view) {
         stopAlarm(view);
@@ -69,6 +90,7 @@ public class AlarmActivity extends AppCompatActivity {
     public void doTask(View view) {
         stopAlarm(view);
         Intent intent = new Intent(this, TrueFalseActivity.class);
+        intent.putExtra("SubjectId", MyData.subjects.indexOf(subject));
         startActivity(intent);
         finish();
     }

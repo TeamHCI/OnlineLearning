@@ -6,15 +6,17 @@
     tools:context=".fragment.CategoryFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/lvCategory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#00ffffff"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
         android:layout_marginHorizontal="4dp"
-        android:layout_marginVertical="10dp"
-        android:dividerHeight="10dp"
-        android:divider="@android:color/transparent"
-        ></ListView>
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginVertical="0dp"
+        android:background="#00ffffff"
+        ></android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

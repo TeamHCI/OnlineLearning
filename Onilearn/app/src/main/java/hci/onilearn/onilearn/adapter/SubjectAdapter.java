@@ -38,7 +38,9 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHode
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHoder holder, final int position) {
-        holder.txtSubjectName.setText(subjectList.get(position).getName());
+        Subject subject = subjectList.get(position);
+        holder.txtSubjectName.setText(subject.getName());
+        holder.imgSubjectIcon.setImageResource(subject.getResId());
         holder.imgSubjectIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +54,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHode
                     }
                 } else {
                     Intent intent = new Intent(context, TrueFalseActivity.class);
+                    intent.putExtra("SubjectId", MyData.subjects.indexOf(subjectList.get(position)));
                     context.startActivity(intent);
                 }
             }

@@ -137,6 +137,7 @@ public class DatLichActivity extends AppCompatActivity {
     private void saveTask() {
         Intent intent = new Intent(this, AlarmReceiver.class);
         intent.putExtra("action", "on");
+        intent.putExtra("SubjectId", MyData.subjects.indexOf(subject));
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, taskTime.getTimeInMillis(), pendingIntent);

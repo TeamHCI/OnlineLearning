@@ -53,10 +53,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="True/False"
+                    android:text="Câu sau đúng hay sai:"
                     android:textColor="#000000"
                     android:textSize="25dp" />
-
+                <ProgressBar
+                    android:id="@+id/determinateBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:progress="0"
+                    android:max="100"
+                    android:progressBackgroundTint="@android:color/transparent"
+                    android:progressTint="#f74604"/>
                 <TextView
                     android:id="@+id/txtQuestion"
                     android:layout_width="match_parent"
@@ -79,7 +87,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:background="#fd1111"
-                        android:text="FALSE"
+                        android:text="Sai"
                         android:textColor="#ffffff"
                         android:textSize="25dp"
                         android:textStyle="bold"
@@ -96,7 +104,7 @@
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="8dp"
                         android:background="#1cb900"
-                        android:text="TRUE"
+                        android:text="Đúng"
                         android:textColor="#ffffff"
                         android:textSize="25dp"
                         android:textStyle="bold"

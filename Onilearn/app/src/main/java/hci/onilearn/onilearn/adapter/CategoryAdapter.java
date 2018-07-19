@@ -1,6 +1,7 @@
 package hci.onilearn.onilearn.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,7 +16,7 @@ import java.util.List;
 import hci.onilearn.onilearn.R;
 import hci.onilearn.onilearn.model.Category;
 
-public class CategoryAdapter extends BaseAdapter {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHoder> {
 
     private Context context;
     private int layout;
@@ -27,38 +28,50 @@ public class CategoryAdapter extends BaseAdapter {
         this.layout = layout;
         this.categoryList = categoryList;
     }
+    public CategoryAdapter(Context context, List<Category> categoryList) {
+        this.context = context;
+        this.categoryList = categoryList;
+    }
 
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
+        notifyDataSetChanged();
+    }
+
+    @NonNull
     @Override
-    public int getCount() {
-        return categoryList.size();
+    public ViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_item, parent, false);
+        return new CategoryAdapter.ViewHoder(view);
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(layout,null);
-
-        TextView txtCategoryName = (TextView) convertView.findViewById(R.id.txtCategoryName);
-        RecyclerView lvSubject = (RecyclerView) convertView.findViewById(R.id.lsSubject);
-
+    public void onBindViewHolder(@NonNull ViewHoder holder, int position) {
         Category category = categoryList.get(position);
-        txtCategoryName.setText(category.getName());
+        holder.txtCategoryName.setText(category.getName());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false);
-        lvSubject.setLayoutManager(layoutManager);
-        subjectAdapter = new SubjectAdapter(convertView.getContext(),category.getSubjects());
-        lvSubject.setAdapter(subjectAdapter);
+        holder.lvSubject.setLayoutManager(layoutManager);
+        subjectAdapter = new SubjectAdapter(context,category.getSubjects());
+        holder.lvSubject.setAdapter(subjectAdapter);
+    }
 
-        return convertView;
+    @Override
+    public int getItemCount() {
+        if (categoryList != null)
+            return categoryList.size();
+        else
+            return 0;
+    }
+
+
+    public class ViewHoder extends RecyclerView.ViewHolder{
+        TextView txtCategoryName;
+        RecyclerView lvSubject;
+        public ViewHoder(View itemView) {
+            super(itemView);
+            txtCategoryName = (TextView) itemView.findViewById(R.id.txtCategoryName);
+            lvSubject = (RecyclerView) itemView.findViewById(R.id.lsSubject);
+        }
     }
 }

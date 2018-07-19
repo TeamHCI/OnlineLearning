@@ -3,6 +3,8 @@ package hci.onilearn.onilearn.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,7 @@ import hci.onilearn.onilearn.model.MyData;
  */
 
 public class CategoryFragment extends Fragment {
-    private ListView listView;
+    private RecyclerView recyclerView;
     private List<Category> categoryList;
     private CategoryAdapter categoryAdapter;
 
@@ -33,11 +35,14 @@ public class CategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
-        listView = (ListView) view.findViewById(R.id.lvCategory);
+        recyclerView = (RecyclerView) view.findViewById(R.id.lvCategory);
         categoryList = MyData.categories;
 
-        categoryAdapter = new CategoryAdapter(this.getContext(), R.layout.category_item, categoryList);
-        listView.setAdapter(categoryAdapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        categoryAdapter = new CategoryAdapter(getContext(), categoryList);
+        recyclerView.setAdapter(categoryAdapter);
 
         return view;
     }

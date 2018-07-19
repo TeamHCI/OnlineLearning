@@ -42,11 +42,8 @@ public class AnalyzeFragment extends Fragment {
         listView.setAdapter(adapter);
     }
     private void setListMonHoc(){
-
-        listThongKe.add(new ThongKe(19,293,"150 phút",12,"Tháng 5"));
-        listThongKe.add(new ThongKe(10,503,"180 phút",5,"Tháng 6"));
         listThongKe.add(new ThongKe(30,302,"250 phút",10,"Tháng 7"));
-
-
+        listThongKe.add(new ThongKe(10,503,"180 phút",5,"Tháng 6"));
+        listThongKe.add(new ThongKe(19,293,"150 phút",12,"Tháng 5"));
     }
 }
