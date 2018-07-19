@@ -10,11 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.ListMonHoc" />
-        <activity android:name=".activity.DatLichActivity"
-            android:parentActivityName=".activity.MainActivity"/>
+        <activity
+            android:name=".activity.DatLichActivity"
+            android:parentActivityName=".activity.MainActivity" />
         <activity android:name=".activity.ThongKeActi" />
-        <activity android:name=".activity.TrueFalseActivity"
-            android:parentActivityName=".activity.MainActivity"/>
+        <activity
+            android:name=".activity.TrueFalseActivity"
+            android:parentActivityName=".activity.MainActivity" />
         <activity android:name=".activity.FalseActivity" />
         <activity android:name=".activity.TrueActivity" />
         <activity android:name=".activity.MainActivity">
@@ -36,9 +38,11 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".activity.SubjectChoiceActivity"
-            android:parentActivityName=".activity.DatLichActivity"
-            android:label="Choose a subject"></activity>
+        <activity
+            android:name=".activity.SubjectChoiceActivity"
+            android:label="Choose a subject"
+            android:parentActivityName=".activity.DatLichActivity" />
+        <activity android:name=".activity.ResultActivity"></activity>
     </application>
 
 </manifest>

@@ -85,7 +85,9 @@ public class TrueFalseActivity extends AppCompatActivity {
                 imgTrue.setVisibility(View.INVISIBLE);
                 pos++;
                 if (pos >= questionTrueFalses.size()) {
-                    finish();
+                    //finish();
+                    Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                    startActivity(intent);
                     return;
                 }
                 initQuestion();
@@ -97,5 +99,6 @@ public class TrueFalseActivity extends AppCompatActivity {
                 imgFalse.setVisibility(View.INVISIBLE);
             }
         });
+
     }
 }
